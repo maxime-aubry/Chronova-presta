@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{NOM}</title>
+
+<!-- ============================================================
+     GABARIT D'APERÇU — ÉCRAN D'APPLICATION
+     méthode Presta / presta-maquettes
+
+     Le pendant de gabarit-apercu.html (page d'accueil), pour les
+     projets dont le produit est une application, pas un site.
+
+     MÊME CONTRAT DE VARIABLES que le gabarit page d'accueil : un
+     fichier de references/partis-pris/*.css se colle indifféremment
+     dans l'un ou dans l'autre, entre les deux marqueurs ci-dessous.
+
+     Un seul fichier, aucune dépendance, aucun script.
+     ============================================================ -->
+
+<style>
+/* @@POLICES@@ */
+
+/* ============================================================
+   1. VARIABLES — LE SEUL BLOC À MODIFIER
+   ============================================================ */
+/* --- DEBUT VARIABLES --- */
+:root {
+
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #ffffff;
+  --c-fond-2:          #f6f7f9;
+  --c-surface:         #ffffff;
+  --c-surface-2:       #f0f2f5;
+  --c-sombre:          #14171d;
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: rgba(255,255,255,.72);
+  --c-contour-clair:   rgba(255,255,255,.35);
+  --c-bordure:         #e2e5ea;
+  --c-bordure-forte:   #c8cdd6;
+  --c-texte-titre:     #16191f;
+  --c-texte:           #16191f;
+  --c-texte-doux:      #5b6472;
+  --c-texte-faible:    #8a929e;
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #2f5bea;
+  --c-primaire-survol: #2547c0;
+  --c-primaire-doux:   #e8eeff;
+  --c-sur-primaire:    #ffffff;
+  --c-focus:           #2f5bea;
+  --c-accent:          #2f5bea;
+  --c-accent-doux:     #e8eeff;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #1a7f52;
+  --c-succes-fond:     #e4f5ed;
+  --c-alerte:          #9a6300;
+  --c-alerte-fond:     #fdf2dd;
+  --c-danger:          #c02b2b;
+  --c-danger-fond:     #fdeaea;
+  --c-info:            #1f5f8b;
+  --c-info-fond:       #e6f1f8;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --police-titre: var(--police);
+  --police-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;
+  --ts-sm:   0.875rem;
+  --ts-base: 1rem;
+  --ts-md:   1.125rem;
+  --ts-lg:   1.5rem;
+  --ts-xl:   2rem;
+  --ts-2xl:  3.25rem;
+  --ts-3xl:  3.75rem;
+
+  --gr-normal: 400;
+  --gr-moyen:  500;
+  --gr-fort:   600;
+  --gr-titre:  700;
+
+  --ih-serree:  1.12;
+  --ih-normale: 1.62;
+  --interlettre-titre: -0.022em;
+  --interlettre-etiquette: 0.08em;
+
+  /* --- Espacement ---------------------------------------- */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 64px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    4px;
+  --r-md:    8px;
+  --r-lg:    16px;
+  --r-xl:    24px;
+  --r-plein: 999px;
+  --r-bouton: var(--r-md);
+  --r-saisie: var(--r-md);
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: 0 1px 2px rgba(16, 24, 40, .06);
+  --o-md: 0 4px 14px rgba(16, 24, 40, .08);
+  --o-lg: 0 24px 60px rgba(16, 24, 40, .16);
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   44px;
+  --pad-carte:    32px;
+  --pad-section:  96px;
+  --largeur-max:  1120px;
+  --largeur-texte: 62ch;
+}
+/* --- FIN VARIABLES --- */
+
+/* ============================================================
+   2. SOCLE — identique pour tous les partis pris
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--c-fond-2);
+  color: var(--c-texte);
+  font-family: var(--police);
+  font-size: var(--ts-sm);
+  line-height: var(--ih-normale);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--police-titre);
+  color: var(--c-texte-titre);
+  font-weight: var(--gr-titre);
+  line-height: var(--ih-serree);
+  letter-spacing: var(--interlettre-titre);
+  margin: 0;
+}
+h1 { font-size: var(--ts-lg); }
+h2 { font-size: var(--ts-md); }
+h3 { font-size: var(--ts-base); }
+h4 { font-size: var(--ts-sm); }
+p  { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a  { color: var(--c-primaire); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.doux   { color: var(--c-texte-doux); }
+.faible { color: var(--c-texte-faible); }
+.mono   { font-family: var(--police-mono); }
+.num    { font-variant-numeric: tabular-nums; }
+.etiquette {
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+  letter-spacing: var(--interlettre-etiquette);
+  text-transform: uppercase;
+  color: var(--c-texte-doux);
+}
+
+/* --- Coque de l'application ------------------------------- */
+.appli { display: flex; min-height: 100vh; }
+
+.laterale {
+  width: 248px; flex: none;
+  background: var(--c-fond);
+  border-right: var(--trait) solid var(--c-bordure);
+  padding: var(--e-4);
+  display: flex; flex-direction: column; gap: var(--e-5);
+}
+.marque {
+  display: flex; align-items: center; gap: var(--e-2);
+  font-family: var(--police-titre);
+  font-weight: var(--gr-titre);
+  font-size: var(--ts-md);
+  letter-spacing: var(--interlettre-titre);
+  color: var(--c-texte-titre);
+  padding: var(--e-2);
+}
+.marque:hover { text-decoration: none; }
+.pastille {
+  width: 28px; height: 28px; flex: none;
+  border-radius: var(--r-sm);
+  background: var(--c-primaire);
+  color: var(--c-sur-primaire);
+  display: grid; place-items: center;
+  font-size: var(--ts-sm);
+}
+.groupe-nav { display: flex; flex-direction: column; gap: var(--e-1); }
+.groupe-nav .etiquette { padding: 0 var(--e-2) var(--e-1); }
+.groupe-nav a {
+  display: flex; align-items: center; gap: var(--e-3);
+  padding: var(--e-2) var(--e-3);
+  border-radius: var(--r-sm);
+  color: var(--c-texte-doux);
+  font-weight: var(--gr-moyen);
+}
+.groupe-nav a:hover { background: var(--c-surface-2); color: var(--c-texte); text-decoration: none; }
+.groupe-nav a[aria-current] { background: var(--c-primaire-doux); color: var(--c-primaire); }
+.groupe-nav a .compteur {
+  margin-left: auto;
+  font-size: var(--ts-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--c-texte-faible);
+}
+.glyphe { width: 18px; text-align: center; flex: none; opacity: .8; }
+.pied-laterale { margin-top: auto; border-top: var(--trait) solid var(--c-bordure); padding-top: var(--e-3); }
+
+.zone { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.barre {
+  background: var(--c-fond);
+  border-bottom: var(--trait) solid var(--c-bordure);
+  padding: 0 var(--e-5);
+  height: 60px;
+  display: flex; align-items: center; gap: var(--e-3);
+}
+.fil { color: var(--c-texte-doux); margin-right: auto; white-space: nowrap; }
+.fil b { color: var(--c-texte); font-weight: var(--gr-moyen); }
+.recherche { width: 260px; }
+.avatar {
+  width: 32px; height: 32px; flex: none;
+  border-radius: var(--r-plein);
+  background: var(--c-surface-2);
+  border: var(--trait) solid var(--c-bordure);
+  display: grid; place-items: center;
+  font-size: var(--ts-xs); font-weight: var(--gr-fort);
+  color: var(--c-texte-doux);
+}
+
+.page {
+  padding: var(--e-5);
+  display: flex; flex-direction: column; gap: var(--e-5);
+}
+.entete-page { display: flex; align-items: flex-start; gap: var(--e-3); flex-wrap: wrap; }
+.entete-page > div:first-child { flex: 1 1 320px; }
+.entete-page p { margin-top: var(--e-1); color: var(--c-texte-doux); }
+
+/* --- Cartes ----------------------------------------------- */
+.carte {
+  background: var(--c-surface);
+  border: var(--trait) solid var(--c-bordure);
+  border-radius: var(--r-lg);
+  box-shadow: var(--o-sm);
+}
+.carte-entete {
+  padding: var(--e-4) var(--e-5);
+  border-bottom: var(--trait) solid var(--c-bordure);
+  display: flex; align-items: center; gap: var(--e-3); flex-wrap: wrap;
+}
+.carte-entete h2 { margin-right: auto; }
+.carte-corps { padding: var(--e-5); }
+
+.grille-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--e-4);
+}
+.kpi { padding: var(--e-5); display: flex; flex-direction: column; gap: var(--e-2); }
+.kpi .valeur {
+  font-family: var(--police-titre);
+  font-size: var(--ts-lg);
+  font-weight: var(--gr-titre);
+  line-height: 1;
+  letter-spacing: var(--interlettre-titre);
+  color: var(--c-texte-titre);
+  font-variant-numeric: tabular-nums;
+}
+.evolution { font-size: var(--ts-xs); font-weight: var(--gr-moyen); }
+.evolution.hausse { color: var(--c-succes); }
+.evolution.baisse { color: var(--c-danger); }
+
+/* Deux cartes côte à côte au maximum, et seulement en bas de page.
+   Tout ce qui porte de la donnée prend la largeur entière. */
+.colonnes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--e-5);
+}
+/* les cartes d'une même rangée s'alignent en hauteur : aucun bloc ne flotte dans le vide */
+.colonnes > .carte { display: flex; flex-direction: column; }
+.colonnes > .carte > .carte-corps, .colonnes > .carte > .vide { flex: 1; }
+
+/* --- Boutons ---------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--e-2);
+  height: var(--h-controle);
+  padding: 0 var(--e-4);
+  border-radius: var(--r-bouton);
+  border: var(--trait) solid transparent;
+  font-family: inherit;
+  font-size: var(--ts-sm);
+  font-weight: var(--gr-fort);
+  line-height: 1;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+.btn-primaire { background: var(--c-primaire); color: var(--c-sur-primaire); }
+.btn-primaire:hover { background: var(--c-primaire-survol); }
+.btn-second { background: var(--c-surface); color: var(--c-texte); border-color: var(--c-bordure-forte); }
+.btn-second:hover { background: var(--c-surface-2); }
+.btn-discret { background: transparent; color: var(--c-texte-doux); }
+.btn-discret:hover { background: var(--c-surface-2); color: var(--c-texte); }
+.btn-danger { background: var(--c-danger); color: #fff; }
+.btn-focus { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+.btn-petit { height: 32px; padding: 0 var(--e-3); font-size: var(--ts-xs); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+/* --- Formulaire ------------------------------------------- */
+.formulaire { display: flex; flex-direction: column; gap: var(--e-4); }
+.rangee { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e-4); }
+.champ { display: flex; flex-direction: column; gap: var(--e-2); }
+.champ > label { font-size: var(--ts-sm); font-weight: var(--gr-moyen); color: var(--c-texte); }
+.saisie {
+  height: var(--h-controle);
+  padding: 0 var(--e-3);
+  border: var(--trait) solid var(--c-bordure-forte);
+  border-radius: var(--r-saisie);
+  background: var(--c-surface);
+  color: var(--c-texte);
+  font-family: inherit;
+  font-size: var(--ts-sm);
+  width: 100%;
+}
+.saisie::placeholder { color: var(--c-texte-faible); }
+.saisie:focus { outline: 2px solid var(--c-focus); outline-offset: 1px; }
+textarea.saisie { height: auto; min-height: 80px; padding: var(--e-3); line-height: var(--ih-normale); resize: vertical; }
+select.saisie { appearance: none; }
+.aide { font-size: var(--ts-xs); color: var(--c-texte-doux); }
+.champ-erreur .saisie { border-color: var(--c-danger); background: var(--c-danger-fond); }
+.msg-erreur { font-size: var(--ts-xs); color: var(--c-danger); font-weight: var(--gr-moyen); }
+.case { display: flex; align-items: flex-start; gap: var(--e-2); }
+.case input { margin-top: 3px; accent-color: var(--c-primaire); width: 15px; height: 15px; }
+.actions-formulaire { display: flex; gap: var(--e-3); align-items: center; }
+
+/* --- Onglets ---------------------------------------------- */
+.onglets { display: flex; gap: var(--e-1); border-bottom: var(--trait) solid var(--c-bordure); padding: 0 var(--e-5); }
+.onglets a {
+  padding: var(--e-3) var(--e-4);
+  font-weight: var(--gr-moyen);
+  color: var(--c-texte-doux);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.onglets a:hover { color: var(--c-texte); text-decoration: none; }
+.onglets a[aria-current] { color: var(--c-primaire); border-bottom-color: var(--c-primaire); }
+
+/* --- Tableau ---------------------------------------------- */
+.enveloppe-table { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  background: var(--c-surface-2);
+  text-align: left;
+  padding: var(--e-3) var(--e-4);
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+  letter-spacing: var(--interlettre-etiquette);
+  text-transform: uppercase;
+  color: var(--c-texte-doux);
+  border-bottom: var(--trait) solid var(--c-bordure);
+  white-space: nowrap;
+}
+tbody td { padding: var(--e-3) var(--e-4); border-bottom: var(--trait) solid var(--c-bordure); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--c-surface-2); }
+td.droite, th.droite { text-align: right; }
+.pagination {
+  display: flex; align-items: center; gap: var(--e-3);
+  padding: var(--e-3) var(--e-5);
+  border-top: var(--trait) solid var(--c-bordure);
+  color: var(--c-texte-doux); font-size: var(--ts-xs);
+}
+.pagination .btn { margin-left: auto; }
+
+/* --- Badges et messages ------------------------------------ */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 2px var(--e-2);
+  border-radius: var(--r-plein);
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+  white-space: nowrap;
+}
+.badge-succes { background: var(--c-succes-fond); color: var(--c-succes); }
+.badge-alerte { background: var(--c-alerte-fond); color: var(--c-alerte); }
+.badge-danger { background: var(--c-danger-fond); color: var(--c-danger); }
+.badge-neutre { background: var(--c-surface-2); color: var(--c-texte-doux); }
+
+.message {
+  display: flex; gap: var(--e-3);
+  padding: var(--e-3) var(--e-4);
+  border-radius: var(--r-md);
+  border: var(--trait) solid transparent;
+}
+.message-info   { background: var(--c-info-fond);   color: var(--c-info);   border-color: var(--c-info); }
+.message-succes { background: var(--c-succes-fond); color: var(--c-succes); border-color: var(--c-succes); }
+.message-alerte { background: var(--c-alerte-fond); color: var(--c-alerte); border-color: var(--c-alerte); }
+.message-danger { background: var(--c-danger-fond); color: var(--c-danger); border-color: var(--c-danger); }
+
+/* --- Divers ------------------------------------------------ */
+.vide {
+  display: flex; flex-direction: column; align-items: center; gap: var(--e-3);
+  padding: var(--e-7) var(--e-5);
+  text-align: center;
+}
+.vide .cadre {
+  width: 48px; height: 48px;
+  border-radius: var(--r-md);
+  background: var(--c-surface-2);
+  border: var(--trait) dashed var(--c-bordure-forte);
+}
+.scene-modale {
+  background: var(--c-surface-2);
+  border: var(--trait) dashed var(--c-bordure-forte);
+  border-radius: var(--r-lg);
+  padding: var(--e-6);
+  display: grid; place-items: center;
+}
+.modale {
+  width: min(420px, 100%);
+  background: var(--c-surface);
+  border: var(--trait) solid var(--c-bordure);
+  border-radius: var(--r-lg);
+  box-shadow: var(--o-lg);
+  overflow: hidden;
+}
+.modale .corps { padding: var(--e-5); display: flex; flex-direction: column; gap: var(--e-3); }
+.modale .pied {
+  padding: var(--e-3) var(--e-5);
+  background: var(--c-surface-2);
+  border-top: var(--trait) solid var(--c-bordure);
+  display: flex; justify-content: flex-end; gap: var(--e-3);
+}
+.pilule {
+  display: inline-flex; align-items: center; gap: var(--e-1);
+  padding: 2px var(--e-3);
+  border-radius: var(--r-plein);
+  background: var(--c-accent-doux);
+  color: var(--c-accent);
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+}
+
+/* --- Fiche du parti pris ----------------------------------- */
+.fiche {
+  border-top: var(--trait) solid var(--c-bordure);
+  background: var(--c-fond);
+  padding: var(--e-6) var(--e-5);
+  display: flex; flex-direction: column; gap: var(--e-5);
+}
+.nuancier { display: flex; flex-wrap: wrap; gap: var(--e-3); }
+.teinte { display: flex; flex-direction: column; gap: var(--e-1); width: 88px; }
+.teinte .pave { height: 42px; border-radius: var(--r-md); border: var(--trait) solid var(--c-bordure); }
+.teinte small { font-size: 11px; color: var(--c-texte-doux); }
+.echelle-typo { display: flex; flex-direction: column; gap: var(--e-2); }
+.echelle-typo > div { display: flex; align-items: baseline; gap: var(--e-4); }
+.echelle-typo small { width: 118px; flex: none; font-size: var(--ts-xs); color: var(--c-texte-faible); }
+.echelle-espace { display: flex; align-items: flex-end; gap: var(--e-3); }
+.echelle-espace span { display: block; background: var(--c-primaire-doux); border: var(--trait) solid var(--c-primaire); border-radius: var(--r-sm); }
+
+@media (max-width: 1080px) {
+  .colonnes { grid-template-columns: 1fr; }
+  .laterale { display: none; }
+  .rangee { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="appli">
+
+  <!-- ---------- Barre latérale ---------- -->
+  <aside class="laterale">
+    <a class="marque" href="#"><span class="pastille">◆</span> Nom du produit</a>
+
+    <nav class="groupe-nav">
+      <span class="etiquette">Pilotage</span>
+      <a href="#" aria-current="page"><span class="glyphe">◫</span> Tableau de bord</a>
+      <a href="#"><span class="glyphe">◷</span> Échéances <span class="compteur">12</span></a>
+      <a href="#"><span class="glyphe">⇄</span> Règlements <span class="compteur">3</span></a>
+    </nav>
+
+    <nav class="groupe-nav">
+      <span class="etiquette">Gestion</span>
+      <a href="#"><span class="glyphe">▤</span> Dossiers</a>
+      <a href="#"><span class="glyphe">◍</span> Clients</a>
+      <a href="#"><span class="glyphe">◈</span> Documents</a>
+    </nav>
+
+    <nav class="groupe-nav">
+      <span class="etiquette">Administration</span>
+      <a href="#"><span class="glyphe">◐</span> Utilisateurs</a>
+      <a href="#"><span class="glyphe">⚙</span> Réglages</a>
+    </nav>
+
+    <div class="pied-laterale groupe-nav">
+      <a href="#"><span class="glyphe">?</span> Aide et assistance</a>
+    </div>
+  </aside>
+
+  <div class="zone">
+
+    <!-- ---------- Barre supérieure ---------- -->
+    <header class="barre">
+      <div class="fil">Pilotage &rsaquo; <b>Tableau de bord</b></div>
+      <input class="saisie recherche" placeholder="Rechercher un dossier, un client">
+      <button class="btn btn-discret btn-petit">Notifications</button>
+      <div class="avatar">JR</div>
+    </header>
+
+    <main class="page">
+
+      <!-- ---------- Titre de page ---------- -->
+      <div class="entete-page">
+        <div>
+          <h1>Tableau de bord</h1>
+          <p>Activité des 30 derniers jours, à jour il y a 4 minutes.</p>
+        </div>
+        <button class="btn btn-second">Exporter</button>
+        <button class="btn btn-primaire">Nouveau dossier</button>
+      </div>
+
+      <!-- ---------- Message ---------- -->
+      <div class="message message-info">
+        <span>ⓘ</span>
+        <div><strong>Trois dossiers attendent une validation.</strong> Ils sont dépassés de plus de 48 heures.</div>
+      </div>
+
+      <!-- ---------- KPI ---------- -->
+      <div class="grille-kpi">
+        <div class="carte kpi">
+          <span class="etiquette">Encours total</span>
+          <span class="valeur">48 320 €</span>
+          <span class="evolution hausse">↑ 12,4 % sur 30 jours</span>
+        </div>
+        <div class="carte kpi">
+          <span class="etiquette">Dossiers actifs</span>
+          <span class="valeur">1 284</span>
+          <span class="evolution hausse">↑ 3,1 % sur 30 jours</span>
+        </div>
+        <div class="carte kpi">
+          <span class="etiquette">Délai moyen</span>
+          <span class="valeur">18 j</span>
+          <span class="evolution baisse">↓ 2,0 % sur 30 jours</span>
+        </div>
+        <div class="carte kpi">
+          <span class="etiquette">Taux de retard</span>
+          <span class="valeur">2,8 %</span>
+          <span class="evolution doux">stable</span>
+        </div>
+      </div>
+
+      <!-- ---------- Onglets + tableau + pagination ---------- -->
+      <section class="carte">
+        <div class="carte-entete">
+          <h2>Derniers dossiers</h2>
+          <span class="pilule">1 284 au total</span>
+          <button class="btn btn-second btn-petit">Filtrer</button>
+          <button class="btn btn-second btn-petit">Trier</button>
+        </div>
+        <nav class="onglets">
+          <a href="#" aria-current="page">Tous</a>
+          <a href="#">À valider</a>
+          <a href="#">En cours</a>
+          <a href="#">Clôturés</a>
+        </nav>
+        <div class="enveloppe-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Référence</th>
+                <th>Client</th>
+                <th>Échéance</th>
+                <th>Statut</th>
+                <th class="droite">Montant</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">DOS-2418</td>
+                <td>Marceau &amp; Fils</td>
+                <td class="doux num">12/08/2026</td>
+                <td><span class="badge badge-succes">Réglé</span></td>
+                <td class="droite num">1 240,00 €</td>
+                <td class="droite"><a href="#">Ouvrir</a></td>
+              </tr>
+              <tr>
+                <td class="mono">DOS-2417</td>
+                <td>Atelier Novak</td>
+                <td class="doux num">09/08/2026</td>
+                <td><span class="badge badge-alerte">À valider</span></td>
+                <td class="droite num">318,50 €</td>
+                <td class="droite"><a href="#">Ouvrir</a></td>
+              </tr>
+              <tr>
+                <td class="mono">DOS-2416</td>
+                <td>Clémence</td>
+                <td class="doux num">03/08/2026</td>
+                <td><span class="badge badge-neutre">Brouillon</span></td>
+                <td class="droite num">96,00 €</td>
+                <td class="droite"><a href="#">Ouvrir</a></td>
+              </tr>
+              <tr>
+                <td class="mono">DOS-2415</td>
+                <td>Groupe Halvard</td>
+                <td class="doux num">28/07/2026</td>
+                <td><span class="badge badge-danger">En retard</span></td>
+                <td class="droite num">2 780,00 €</td>
+                <td class="droite"><a href="#">Ouvrir</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span>4 dossiers sur 1 284</span>
+          <button class="btn btn-second btn-petit">Précédent</button>
+          <button class="btn btn-second btn-petit">Suivant</button>
+        </div>
+      </section>
+
+      <!-- ---------- Fenêtre modale ---------- -->
+      <section class="carte">
+        <div class="carte-entete"><h2>Fenêtre de confirmation</h2></div>
+        <div class="carte-corps">
+          <div class="scene-modale">
+            <div class="modale">
+              <div class="corps">
+                <h3>Clôturer le dossier DOS-2417 ?</h3>
+                <p class="doux">Le client sera prévenu par e-mail. Cette action est définitive.</p>
+              </div>
+              <div class="pied">
+                <button class="btn btn-discret">Revenir en arrière</button>
+                <button class="btn btn-danger">Clôturer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- Deux cartes côte à côte au maximum ---------- -->
+      <div class="colonnes">
+
+        <!-- ---------- États des commandes d'action ---------- -->
+        <section class="carte">
+          <div class="carte-entete"><h2>Commandes d'action</h2></div>
+          <div class="carte-corps" style="display: flex; flex-wrap: wrap; gap: var(--e-3)">
+            <button class="btn btn-primaire">Principal</button>
+            <button class="btn btn-second">Secondaire</button>
+            <button class="btn btn-discret">Discret</button>
+            <button class="btn btn-danger">Supprimer</button>
+            <button class="btn btn-primaire btn-focus">Au clavier</button>
+            <button class="btn btn-primaire" disabled>Indisponible</button>
+          </div>
+        </section>
+
+        <!-- ---------- Messages ---------- -->
+        <section class="carte">
+          <div class="carte-entete"><h2>Messages</h2></div>
+          <div class="carte-corps" style="display: flex; flex-direction: column; gap: var(--e-3)">
+            <div class="message message-succes"><span>✓</span><div>Le dossier a bien été enregistré.</div></div>
+            <div class="message message-alerte"><span>!</span><div>Ce montant dépasse l'encours autorisé du client.</div></div>
+            <div class="message message-danger"><span>✕</span><div>L'enregistrement a échoué. Réessayez dans quelques instants.</div></div>
+          </div>
+        </section>
+
+        <!-- ---------- Formulaire ---------- -->
+        <section class="carte">
+          <div class="carte-entete"><h2>Nouveau client</h2></div>
+          <div class="carte-corps">
+            <form class="formulaire" onsubmit="return false">
+              <div class="champ">
+                <label for="ch-nom">Raison sociale</label>
+                <input class="saisie" id="ch-nom" placeholder="Marceau &amp; Fils">
+              </div>
+              <div class="champ champ-erreur">
+                <label for="ch-mail">Adresse e-mail</label>
+                <input class="saisie" id="ch-mail" value="contact@marceau">
+                <span class="msg-erreur">Cette adresse e-mail n'est pas valide.</span>
+              </div>
+              <div class="champ">
+                <label for="ch-pays">Pays</label>
+                <select class="saisie" id="ch-pays">
+                  <option>France</option><option>Belgique</option><option>Suisse</option>
+                </select>
+              </div>
+              <div class="champ">
+                <label for="ch-note">Note interne</label>
+                <textarea class="saisie" id="ch-note" placeholder="Visible par votre équipe seulement."></textarea>
+              </div>
+              <label class="case">
+                <input type="checkbox" checked>
+                <span>J'accepte les <a href="#">conditions d'utilisation</a>.</span>
+              </label>
+              <div class="actions-formulaire">
+                <button class="btn btn-primaire">Créer le client</button>
+                <button class="btn btn-discret">Annuler</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ---------- État vide ---------- -->
+        <section class="carte">
+          <div class="vide">
+            <div class="cadre"></div>
+            <h3>Aucun dossier en retard</h3>
+            <p class="doux">Les dossiers dépassant leur échéance apparaîtront ici.</p>
+            <button class="btn btn-second btn-petit">Élargir la période</button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ============================================================
+           FICHE DU PARTI PRIS — les variables rendues visibles
+           ============================================================ -->
+      <section class="carte fiche">
+
+        <div>
+          <span class="etiquette">Couleurs</span>
+          <div class="nuancier" style="margin-top: var(--e-3)">
+            <div class="teinte"><div class="pave" style="background: var(--c-primaire)"></div><small>primaire</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-primaire-doux)"></div><small>primaire douce</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-accent)"></div><small>accent</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-sombre)"></div><small>sombre</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-texte-titre)"></div><small>texte titre</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-texte-doux)"></div><small>texte doux</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-fond)"></div><small>fond</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-fond-2)"></div><small>fond 2</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-surface-2)"></div><small>surface 2</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-bordure)"></div><small>bordure</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-succes)"></div><small>succès</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-alerte)"></div><small>alerte</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-danger)"></div><small>danger</small></div>
+            <div class="teinte"><div class="pave" style="background: var(--c-info)"></div><small>info</small></div>
+          </div>
+        </div>
+
+        <div class="rangee">
+          <div>
+            <span class="etiquette">Typographie</span>
+            <div class="echelle-typo" style="margin-top: var(--e-3)">
+              <div><small>lg · chiffre de KPI</small><span style="font-family: var(--police-titre); font-size: var(--ts-lg); font-weight: var(--gr-titre); line-height: 1; letter-spacing: var(--interlettre-titre)">48 320 €</span></div>
+              <div><small>lg · titre de page</small><span style="font-family: var(--police-titre); font-size: var(--ts-lg); font-weight: var(--gr-titre); letter-spacing: var(--interlettre-titre)">Tableau de bord</span></div>
+              <div><small>md · titre de carte</small><span style="font-family: var(--police-titre); font-size: var(--ts-md); font-weight: var(--gr-titre)">Derniers dossiers</span></div>
+              <div><small>base · corps large</small><span style="font-size: var(--ts-base)">Le texte courant de l'application.</span></div>
+              <div><small>sm · corps dense</small><span style="font-size: var(--ts-sm)">Les tableaux, les libellés, la navigation.</span></div>
+              <div><small>xs · étiquette</small><span class="etiquette">Encours total</span></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="etiquette">Espacement, rayons, relief</span>
+            <div class="echelle-espace" style="margin-top: var(--e-3)">
+              <span style="width: var(--e-1); height: var(--e-1)"></span>
+              <span style="width: var(--e-2); height: var(--e-2)"></span>
+              <span style="width: var(--e-3); height: var(--e-3)"></span>
+              <span style="width: var(--e-4); height: var(--e-4)"></span>
+              <span style="width: var(--e-5); height: var(--e-5)"></span>
+              <span style="width: var(--e-6); height: var(--e-6)"></span>
+              <span style="width: var(--e-7); height: var(--e-7)"></span>
+            </div>
+            <div style="display: flex; gap: var(--e-3); align-items: flex-end; margin-top: var(--e-4)">
+              <div style="width: 56px; height: 40px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-sm); box-shadow: var(--o-sm)"></div>
+              <div style="width: 56px; height: 40px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-md); box-shadow: var(--o-md)"></div>
+              <div style="width: 56px; height: 40px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-lg); box-shadow: var(--o-lg)"></div>
+              <div style="width: 40px; height: 40px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-plein)"></div>
+            </div>
+            <p class="aide" style="margin-top: var(--e-3)">
+              Contrôle <span class="mono">var(--h-controle)</span> ·
+              carte <span class="mono">var(--pad-carte)</span> ·
+              bouton <span class="mono">var(--r-bouton)</span>
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

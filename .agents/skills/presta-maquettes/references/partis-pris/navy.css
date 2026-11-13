@@ -1,0 +1,96 @@
+/* Navy — Coffre-fort violet à minuit — vert de signal pour l'action, lavande pour la voix de marque, cartes cerclées d'un filet clair.
+   Documentation complète : design-systems/navy.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #1c1624;   /* Midnight Plum — noir teinté violet */
+  --c-fond-2:          #231d2b;
+  --c-surface:         #2d2734;   /* Shadow Plum — la carte, un cran au-dessus du fond */
+  --c-surface-2:       #3a3340;   /* Elevated Panel */
+  --c-sombre:          #2d2734;
+  --c-sur-sombre:      #f1f0ec;
+  --c-sur-sombre-doux: #d0c9c4;
+  --c-contour-clair:   #55505b;
+  --c-bordure:         rgba(229, 231, 235, .14);  /* le filet clair à 14 %, jamais une ombre */
+  --c-bordure-forte:   #55505b;   /* Iron Edge */
+  --c-texte-titre:     #f1f0ec;   /* Bone White — jamais de blanc pur */
+  --c-texte:           #d0c9c4;   /* Ash Veil */
+  --c-texte-doux:      #a5a2a5;   /* Mid Ash */
+  --c-texte-faible:    #7d7885;   /* dérivé : Iron Edge est trop sombre pour du texte */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #00f575;   /* Signal Green — un seul bouton vert par écran */
+  --c-primaire-survol: #33f78f;
+  --c-primaire-doux:   #0a2a1a;
+  --c-sur-primaire:    #000000;   /* le système impose du texte noir sur le vert */
+  --c-focus:           #00f575;
+  --c-accent:          #b997ff;   /* Lavender Spark — voix de marque, jamais sur un bouton */
+  --c-accent-doux:     #2a2140;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #4ce49a;   /* vert désaturé : le vert vif reste réservé à l'action */
+  --c-succes-fond:     #10281e;
+  --c-alerte:          #ffc266;   /* dérivé */
+  --c-alerte-fond:     #2b2113;
+  --c-danger:          #ff7a63;   /* Ember Orange éclairci */
+  --c-danger-fond:     #2e1a16;
+  --c-info:            #b997ff;   /* écart assumé : le système réserve le lavande à la marque */
+  --c-info-fond:       #241d33;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: var(--police);  /* système à une seule famille, des légendes aux titres */
+  --police-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;    /* 12 */
+  --ts-sm:   0.875rem;   /* 14 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.125rem;   /* 18 */
+  --ts-lg:   1.5rem;     /* 24 */
+  --ts-xl:   3rem;       /* 48 */
+  --ts-2xl:  4rem;       /* 64 */
+  --ts-3xl:  6rem;       /* 96 */
+
+  --gr-normal:  400;
+  --gr-moyen:   450;     /* le poids de travail du système */
+  --gr-fort:    500;
+  --gr-titre:   500;
+  --gr-display: 700;     /* le seul endroit où le système va jusqu'au gras */
+
+  --ih-serree:  1.05;
+  --ih-normale: 1.5;
+  --interlettre-titre: -0.02em;
+  --interlettre-etiquette: 0.03em;
+
+  /* --- Espacement (base 8px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 40px;  --e-8: 56px;  --e-9: 80px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    8px;
+  --r-md:    12px;
+  --r-lg:    20px;
+  --r-xl:    20px;
+  --r-plein: 9999px;
+  --r-bouton: 12px;
+  --r-saisie: 12px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: 0 0 0 0 rgba(0, 0, 0, 0);          /* pas d'ombre : le relief vient des surfaces */
+  --o-md: 0 0 40px rgba(185, 151, 255, .10); /* le halo violet */
+  --o-lg: 0 0 60px rgba(185, 151, 255, .15);
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   40px;
+  --pad-carte:    32px;
+  --pad-section:  80px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Assuré, orienté sécurité. Affirmations nettes, un mot-clé
+     mis en lumière par titre.                                */
+}

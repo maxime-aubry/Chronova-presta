@@ -1,0 +1,94 @@
+/* Light — Laboratoire crème et pastille noire — blanc chaud, très gros titres non gras, cartes crème plates, boutons en pastille noire.
+   Documentation complète : design-systems/light.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #ffffff;   /* Paper */
+  --c-fond-2:          #f9f8f6;   /* Cream */
+  --c-surface:         #f9f8f6;   /* la carte est crème, la page est blanche */
+  --c-surface-2:       #f2ede5;   /* Sand */
+  --c-sombre:          #0a0a0a;   /* Jet Ink */
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: rgba(255, 255, 255, .66);
+  --c-contour-clair:   rgba(255, 255, 255, .28);
+  --c-bordure:         #e6e2dc;   /* discret : les cartes doivent lire comme plates */
+  --c-bordure-forte:   #d5d9e2;   /* Dove — le seul filet du système */
+  --c-texte-titre:     #0a0a0a;
+  --c-texte:           #0a0a0a;
+  --c-texte-doux:      #858585;   /* Fog */
+  --c-texte-faible:    #9d9d9d;   /* Pewter */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #0a0a0a;   /* le CTA est noir, jamais chromatique */
+  --c-primaire-survol: #2b2b2b;
+  --c-primaire-doux:   #f2ede5;
+  --c-sur-primaire:    #ffffff;
+  --c-focus:           #0a0a0a;
+  --c-accent:          #0a0a0a;   /* pilule Beta : encre sur lavis chaud */
+  --c-accent-doux:     #f2ede5;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #1d8f31;   /* Sprout assombri pour rester lisible en texte */
+  --c-succes-fond:     #eaf7ec;
+  --c-alerte:          #8a6100;   /* Sunbeam assombri */
+  --c-alerte-fond:     #fdf4e0;
+  --c-danger:          #cf4139;   /* Ember assombri */
+  --c-danger-fond:     #fdecea;
+  --c-info:            #545454;   /* Steel — l'info reste monochrome */
+  --c-info-fond:       #f2ede5;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: var(--police);
+  --police-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;    /* 12 */
+  --ts-sm:   0.875rem;   /* 14 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.125rem;   /* 18 */
+  --ts-lg:   1.5rem;     /* 24 */
+  --ts-xl:   3rem;       /* 48 */
+  --ts-2xl:  4.5rem;     /* 72 */
+  --ts-3xl:  4.5rem;
+
+  --gr-normal: 400;
+  --gr-moyen:  500;
+  --gr-fort:   500;
+  --gr-titre:  400;      /* la signature : les titres ne sont pas gras */
+
+  --ih-serree:  1.0;     /* les titres sont verrouillés sur la grille */
+  --ih-normale: 1.5;
+  --interlettre-titre: -0.025em;
+  --interlettre-etiquette: 0.06em;
+
+  /* --- Espacement (base 4px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 64px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    3px;
+  --r-md:    6px;
+  --r-lg:    16px;
+  --r-xl:    16px;
+  --r-plein: 9999px;
+  --r-bouton: 9999px;    /* la pastille est la forme signature du système */
+  --r-saisie: 6px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: rgba(10, 10, 10, .05) 0 0 0 1px;
+  --o-md: rgba(0, 0, 0, .06) 0 0 0 1px, rgba(15, 23, 42, .18) 0 18px 40px -24px;
+  --o-lg: rgba(0, 0, 0, .1) 0 20px 25px -5px, rgba(0, 0, 0, .1) 0 8px 10px -6px;
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   44px;
+  --pad-carte:    40px;
+  --pad-section:  80px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Affirmatif et bref. La promesse tient en une phrase,
+     le reste explique. Pas de vocabulaire commercial.        */
+}

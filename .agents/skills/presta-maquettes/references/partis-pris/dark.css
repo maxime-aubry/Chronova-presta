@@ -1,0 +1,94 @@
+/* Dark — Instrument de précision nocturne — fond quasi noir, typographie serrée, une seule couleur électrique réservée à l'action.
+   Documentation complète : design-systems/dark.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #08090a;   /* Void */
+  --c-fond-2:          #0f1011;   /* Carbon */
+  --c-surface:         #0f1011;
+  --c-surface-2:       #161718;   /* Obsidian */
+  --c-sombre:          #161718;
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: #8a8f98;
+  --c-contour-clair:   #383b3f;
+  --c-bordure:         #23252a;   /* Graphite — la profondeur vient du filet, pas de l'ombre */
+  --c-bordure-forte:   #383b3f;   /* Smoke */
+  --c-texte-titre:     #ffffff;   /* Paper */
+  --c-texte:           #d0d6e0;   /* Mist */
+  --c-texte-doux:      #8a8f98;   /* Fog */
+  --c-texte-faible:    #62666d;   /* Ash */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #e4f222;   /* Acid Lime — la seule couleur chromatique d'action */
+  --c-primaire-survol: #eef73f;
+  --c-primaire-doux:   #1c2007;
+  --c-sur-primaire:    #08090a;
+  --c-focus:           #e4f222;
+  --c-accent:          #8b5cf6;   /* Lavender — ponctuation décorative */
+  --c-accent-doux:     #1c1732;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #4ade80;
+  --c-succes-fond:     #0d2415;
+  --c-alerte:          #e8c65a;   /* dérivé : le système n'a pas de couleur d'avertissement */
+  --c-alerte-fond:     #2a2310;
+  --c-danger:          #ff8080;   /* Coral Red éclairci pour rester lisible sur fond noir */
+  --c-danger-fond:     #2b1414;
+  --c-info:            #4fd3e3;   /* Signal Teal éclairci */
+  --c-info-fond:       #08262a;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: var(--police);
+  --police-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;    /* 12 */
+  --ts-sm:   0.9375rem;  /* 15 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.25rem;    /* 20 */
+  --ts-lg:   1.5rem;     /* 24 */
+  --ts-xl:   3rem;       /* 48 */
+  --ts-2xl:  4rem;       /* 64 */
+  --ts-3xl:  4.5rem;     /* 72 */
+
+  --gr-normal: 400;
+  --gr-moyen:  510;
+  --gr-fort:   510;
+  --gr-titre:  510;      /* plafond du système : jamais de gras 700 */
+
+  --ih-serree:  1.0;
+  --ih-normale: 1.5;
+  --interlettre-titre: -0.022em;
+  --interlettre-etiquette: 0.06em;
+
+  /* --- Espacement (base 4px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 64px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    2px;
+  --r-md:    6px;
+  --r-lg:    12px;
+  --r-xl:    12px;       /* le système interdit 16px+ sur les cartes */
+  --r-plein: 9999px;
+  --r-bouton: 6px;
+  --r-saisie: 6px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: rgba(0, 0, 0, .4) 0 2px 4px 0;
+  --o-md: rgba(0, 0, 0, .5) 0 4px 16px 0;
+  --o-lg: rgba(8, 9, 10, .6) 0 4px 32px 0;
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   36px;
+  --pad-carte:    24px;
+  --pad-section:  96px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Sec, technique, sans emphase. Phrases courtes, aucun
+     superlatif, aucun point d'exclamation.                   */
+}

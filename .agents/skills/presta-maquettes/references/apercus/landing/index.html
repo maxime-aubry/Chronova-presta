@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Les cinq directions</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:#f4f5f7;color:#16191f;
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  header{padding:28px 32px 8px;text-align:center}
+  h1{margin:0;font-size:22px;letter-spacing:-.02em}
+  header p{margin:6px 0 0;color:#5b6472}
+  /* La vignette fait exactement la largeur de l'iframe mise à l'échelle
+     (1500 x 0.32 = 480). Sans ça, la carte s'élargit et l'aperçu laisse un
+     blanc à droite. */
+  .grille{display:grid;grid-template-columns:repeat(auto-fill,480px);
+          justify-content:center;gap:24px;padding:24px 32px 48px}
+  .vignette{background:#fff;border:1px solid #e2e5ea;border-radius:14px;overflow:hidden;
+            box-shadow:0 1px 2px rgba(16,24,40,.06);text-decoration:none;color:inherit;display:block}
+  .vignette:hover{box-shadow:0 8px 24px rgba(16,24,40,.14)}
+  .cadre{height:300px;overflow:hidden;position:relative;background:#fff;border-bottom:1px solid #e2e5ea}
+  .cadre iframe{width:1500px;height:1120px;border:0;position:absolute;top:0;left:0;
+                transform:scale(.32);transform-origin:top left;pointer-events:none}
+  .legende{padding:14px 18px;display:flex;align-items:baseline;gap:10px}
+  .legende b{font-size:16px}
+  .legende span{color:#5b6472;font-size:13px}
+  @media (max-width:560px){
+    .grille{grid-template-columns:1fr;padding:16px}
+    .cadre{height:210px}
+    .cadre iframe{transform:scale(.22)}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Les cinq directions</h1>
+  <p>La même page à chaque fois, seul le style change. Cliquez pour ouvrir en grand.</p>
+</header>
+<div class="grille">
+  <a class="vignette" href="dark.html"><div class="cadre"><iframe src="dark.html" scrolling="no"></iframe></div><div class="legende"><b>dark</b><span>sombre, accent lime</span></div></a>
+  <a class="vignette" href="navy.html"><div class="cadre"><iframe src="navy.html" scrolling="no"></iframe></div><div class="legende"><b>navy</b><span>sombre, prune et vert</span></div></a>
+  <a class="vignette" href="silver.html"><div class="cadre"><iframe src="silver.html" scrolling="no"></iframe></div><div class="legende"><b>silver</b><span>clair, filets gris et orange</span></div></a>
+  <a class="vignette" href="light.html"><div class="cadre"><iframe src="light.html" scrolling="no"></iframe></div><div class="legende"><b>light</b><span>clair, crème et noir</span></div></a>
+  <a class="vignette" href="warm.html"><div class="cadre"><iframe src="warm.html" scrolling="no"></iframe></div><div class="legende"><b>warm</b><span>clair, parchemin et serif</span></div></a>
+</div>
+</body>
+</html>

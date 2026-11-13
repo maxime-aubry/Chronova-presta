@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dark</title>
+
+<!-- ============================================================
+     GABARIT D'APERÇU — méthode Presta / presta-maquettes
+
+     Une page d'accueil générique, plus la fiche du parti pris.
+     Un seul fichier, aucune dépendance, aucun script.
+     S'ouvre au navigateur, se capture par l'agent.
+
+     Pour produire un aperçu : ne toucher QUE le bloc VARIABLES
+     ci-dessous, plus le nom et la phrase du bandeau d'identité.
+     Le socle CSS et le contenu ne changent pas d'un parti pris à
+     l'autre — c'est ce qui rend les propositions comparables.
+     ============================================================ -->
+
+<style>
+
+
+/* ============================================================
+   1. VARIABLES — LE SEUL BLOC À MODIFIER
+   ============================================================ */
+/* --- DEBUT VARIABLES --- */
+/* Dark — Instrument de précision nocturne — fond quasi noir, typographie serrée, une seule couleur électrique réservée à l'action.
+   Documentation complète : design-systems/dark.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #08090a;   /* Void */
+  --c-fond-2:          #0f1011;   /* Carbon */
+  --c-surface:         #0f1011;
+  --c-surface-2:       #161718;   /* Obsidian */
+  --c-sombre:          #161718;
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: #8a8f98;
+  --c-contour-clair:   #383b3f;
+  --c-bordure:         #23252a;   /* Graphite — la profondeur vient du filet, pas de l'ombre */
+  --c-bordure-forte:   #383b3f;   /* Smoke */
+  --c-texte-titre:     #ffffff;   /* Paper */
+  --c-texte:           #d0d6e0;   /* Mist */
+  --c-texte-doux:      #8a8f98;   /* Fog */
+  --c-texte-faible:    #62666d;   /* Ash */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #e4f222;   /* Acid Lime — la seule couleur chromatique d'action */
+  --c-primaire-survol: #eef73f;
+  --c-primaire-doux:   #1c2007;
+  --c-sur-primaire:    #08090a;
+  --c-focus:           #e4f222;
+  --c-accent:          #8b5cf6;   /* Lavender — ponctuation décorative */
+  --c-accent-doux:     #1c1732;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #4ade80;
+  --c-succes-fond:     #0d2415;
+  --c-alerte:          #e8c65a;   /* dérivé : le système n'a pas de couleur d'avertissement */
+  --c-alerte-fond:     #2a2310;
+  --c-danger:          #ff8080;   /* Coral Red éclairci pour rester lisible sur fond noir */
+  --c-danger-fond:     #2b1414;
+  --c-info:            #4fd3e3;   /* Signal Teal éclairci */
+  --c-info-fond:       #08262a;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: var(--police);
+  --police-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;    /* 12 */
+  --ts-sm:   0.9375rem;  /* 15 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.25rem;    /* 20 */
+  --ts-lg:   1.5rem;     /* 24 */
+  --ts-xl:   3rem;       /* 48 */
+  --ts-2xl:  4rem;       /* 64 */
+  --ts-3xl:  4.5rem;     /* 72 */
+
+  --gr-normal: 400;
+  --gr-moyen:  510;
+  --gr-fort:   510;
+  --gr-titre:  510;      /* plafond du système : jamais de gras 700 */
+
+  --ih-serree:  1.0;
+  --ih-normale: 1.5;
+  --interlettre-titre: -0.022em;
+  --interlettre-etiquette: 0.06em;
+
+  /* --- Espacement (base 4px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 64px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    2px;
+  --r-md:    6px;
+  --r-lg:    12px;
+  --r-xl:    12px;       /* le système interdit 16px+ sur les cartes */
+  --r-plein: 9999px;
+  --r-bouton: 6px;
+  --r-saisie: 6px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: rgba(0, 0, 0, .4) 0 2px 4px 0;
+  --o-md: rgba(0, 0, 0, .5) 0 4px 16px 0;
+  --o-lg: rgba(8, 9, 10, .6) 0 4px 32px 0;
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   36px;
+  --pad-carte:    24px;
+  --pad-section:  96px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Sec, technique, sans emphase. Phrases courtes, aucun
+     superlatif, aucun point d'exclamation.                   */
+}
+/* --- FIN VARIABLES --- */
+
+/* ============================================================
+   2. SOCLE — identique pour tous les partis pris
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--c-fond);
+  color: var(--c-texte);
+  font-family: var(--police);
+  font-size: var(--ts-base);
+  line-height: var(--ih-normale);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--police-titre);
+  color: var(--c-texte-titre);
+  font-weight: var(--gr-titre);
+  line-height: var(--ih-serree);
+  letter-spacing: var(--interlettre-titre);
+  margin: 0;
+  text-wrap: balance;
+}
+/* --gr-display : poids réservé au seul titre du hero. Optionnel — un parti pris
+   qui ne le définit pas retombe sur --gr-titre. */
+h1 { font-size: var(--ts-2xl); font-weight: var(--gr-display, var(--gr-titre)); }
+h2 { font-size: var(--ts-xl); }
+h3 { font-size: var(--ts-lg); }
+h4 { font-size: var(--ts-md); }
+p  { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a  { color: var(--c-primaire); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.doux   { color: var(--c-texte-doux); }
+.faible { color: var(--c-texte-faible); }
+.mono   { font-family: var(--police-mono); }
+.num    { font-variant-numeric: tabular-nums; }
+.etiquette {
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+  letter-spacing: var(--interlettre-etiquette);
+  text-transform: uppercase;
+  color: var(--c-texte-doux);
+}
+.contenu { width: 100%; max-width: var(--largeur-max); margin: 0 auto; padding-inline: var(--e-5); }
+.section { padding-block: var(--pad-section); }
+.section-douce { background: var(--c-fond-2); }
+.entete-section {
+  display: flex; flex-direction: column; gap: var(--e-4);
+  max-width: var(--largeur-texte);
+  margin-bottom: var(--e-7);
+}
+.entete-section.centree { margin-inline: auto; text-align: center; align-items: center; }
+.entete-section p { font-size: var(--ts-md); color: var(--c-texte-doux); }
+
+/* --- Boutons ---------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--e-2);
+  height: var(--h-controle);
+  padding: 0 var(--e-5);
+  border-radius: var(--r-bouton);
+  border: var(--trait) solid transparent;
+  font-family: inherit;
+  font-size: var(--ts-sm);
+  font-weight: var(--gr-fort);
+  line-height: 1;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color .14s ease, border-color .14s ease, color .14s ease;
+}
+.btn:hover { text-decoration: none; }
+.btn-primaire { background: var(--c-primaire); color: var(--c-sur-primaire); }
+.btn-primaire:hover { background: var(--c-primaire-survol); }
+.btn-second { background: var(--c-surface); color: var(--c-texte); border-color: var(--c-bordure-forte); }
+.btn-second:hover { background: var(--c-surface-2); }
+.btn-discret { background: transparent; color: var(--c-texte-doux); }
+.btn-discret:hover { background: var(--c-surface-2); color: var(--c-texte); }
+.btn-danger { background: var(--c-danger); color: #fff; }
+.btn-sur-sombre { background: var(--c-sur-sombre); color: var(--c-sombre); }
+.btn-contour-clair { background: transparent; color: var(--c-sur-sombre); border-color: var(--c-contour-clair); }
+.btn-focus { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+.btn-petit { height: 34px; padding: 0 var(--e-3); font-size: var(--ts-xs); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+/* --- En-tête ---------------------------------------------- */
+.entete {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--c-fond);
+  border-bottom: var(--trait) solid var(--c-bordure);
+}
+.entete .contenu { display: flex; align-items: center; gap: var(--e-6); height: 72px; }
+.marque {
+  display: flex; align-items: center; gap: var(--e-2);
+  font-family: var(--police-titre);
+  font-weight: var(--gr-titre);
+  font-size: var(--ts-md);
+  letter-spacing: var(--interlettre-titre);
+  color: var(--c-texte);
+}
+.marque:hover { text-decoration: none; }
+.pastille {
+  width: 30px; height: 30px;
+  border-radius: var(--r-md);
+  background: var(--c-primaire);
+  color: var(--c-sur-primaire);
+  display: grid; place-items: center;
+  font-size: var(--ts-sm);
+}
+.nav { display: flex; gap: var(--e-5); margin-right: auto; }
+.nav a { color: var(--c-texte-doux); font-size: var(--ts-sm); font-weight: var(--gr-moyen); }
+.nav a:hover { color: var(--c-texte); text-decoration: none; }
+
+/* --- Hero -------------------------------------------------- */
+.hero { padding-block: var(--e-9) var(--e-8); text-align: center; }
+.hero .contenu { display: flex; flex-direction: column; align-items: center; gap: var(--e-5); }
+.pilule {
+  display: inline-flex; align-items: center; gap: var(--e-2);
+  padding: var(--e-1) var(--e-3);
+  border-radius: var(--r-plein);
+  background: var(--c-accent-doux);
+  color: var(--c-accent);
+  font-size: var(--ts-xs);
+  font-weight: var(--gr-fort);
+}
+.hero h1 { max-width: 16ch; }
+.hero .chapo { font-size: var(--ts-md); color: var(--c-texte-doux); max-width: 52ch; }
+.actions-hero { display: flex; gap: var(--e-3); flex-wrap: wrap; justify-content: center; }
+.mention { font-size: var(--ts-xs); color: var(--c-texte-faible); }
+
+/* Cadre de visuel : on ne dessine jamais la donnée */
+.cadre-visuel {
+  width: 100%;
+  aspect-ratio: 24 / 9;
+  margin-top: var(--e-5);
+  border: var(--trait) dashed var(--c-bordure-forte);
+  border-radius: var(--r-xl);
+  background: var(--c-surface-2);
+  box-shadow: var(--o-lg);
+  display: grid; place-items: center;
+  padding: var(--e-6);
+  color: var(--c-texte-doux);
+  font-size: var(--ts-sm);
+  text-align: center;
+}
+
+/* --- Bandeau de preuve ------------------------------------- */
+.preuves {
+  border-block: var(--trait) solid var(--c-bordure);
+  padding-block: var(--e-6);
+}
+.preuves .contenu { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e-5); }
+.chiffre { display: flex; flex-direction: column; gap: var(--e-1); }
+.chiffre b {
+  font-family: var(--police-titre);
+  font-size: var(--ts-xl);
+  font-weight: var(--gr-titre);
+  letter-spacing: var(--interlettre-titre);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.chiffre span { font-size: var(--ts-sm); color: var(--c-texte-doux); }
+
+/* --- Grilles ----------------------------------------------- */
+.grille-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--e-5); }
+.grille-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--e-6); }
+
+.carte {
+  background: var(--c-surface);
+  border: var(--trait) solid var(--c-bordure);
+  border-radius: var(--r-lg);
+  box-shadow: var(--o-sm);
+  padding: var(--pad-carte);
+  display: flex; flex-direction: column; gap: var(--e-3);
+}
+.icone {
+  width: 44px; height: 44px;
+  border-radius: var(--r-md);
+  background: var(--c-accent-doux);
+  color: var(--c-accent);
+  display: grid; place-items: center;
+  font-size: var(--ts-md);
+  margin-bottom: var(--e-2);
+}
+
+/* --- Étapes ------------------------------------------------ */
+.etape { display: flex; flex-direction: column; gap: var(--e-3); }
+.numero-etape {
+  width: 36px; height: 36px;
+  border-radius: var(--r-plein);
+  border: var(--trait) solid var(--c-bordure-forte);
+  display: grid; place-items: center;
+  font-family: var(--police-titre);
+  font-weight: var(--gr-titre);
+  font-size: var(--ts-sm);
+  color: var(--c-texte-doux);
+}
+
+/* --- Témoignage -------------------------------------------- */
+.temoignage {
+  background: var(--c-surface);
+  border: var(--trait) solid var(--c-bordure);
+  border-radius: var(--r-xl);
+  padding: var(--e-8) var(--e-7);
+  display: flex; flex-direction: column; gap: var(--e-5);
+  max-width: 760px; margin-inline: auto;
+  text-align: center; align-items: center;
+}
+.temoignage blockquote {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: var(--ts-lg);
+  font-weight: var(--gr-moyen);
+  line-height: 1.4;
+  letter-spacing: var(--interlettre-titre);
+  text-wrap: balance;
+}
+.signature { display: flex; align-items: center; gap: var(--e-3); }
+.avatar {
+  width: 44px; height: 44px; border-radius: var(--r-plein);
+  background: var(--c-surface-2);
+  border: var(--trait) solid var(--c-bordure);
+  display: grid; place-items: center;
+  font-size: var(--ts-sm); font-weight: var(--gr-fort);
+  color: var(--c-texte-doux);
+}
+.signature div { text-align: left; line-height: 1.35; }
+.signature small { display: block; color: var(--c-texte-doux); font-size: var(--ts-sm); }
+
+/* --- Tarifs ------------------------------------------------- */
+.tarif { position: relative; }
+.tarif.mis-en-avant {
+  border-color: var(--c-primaire);
+  border-width: 2px;
+  box-shadow: var(--o-md);
+}
+.ruban {
+  position: absolute; top: calc(-1 * var(--e-3)); left: var(--e-5);
+  background: var(--c-primaire); color: var(--c-sur-primaire);
+  border-radius: var(--r-plein);
+  padding: var(--e-1) var(--e-3);
+  font-size: var(--ts-xs); font-weight: var(--gr-fort);
+}
+.prix { display: flex; align-items: baseline; gap: var(--e-2); }
+.prix b {
+  font-family: var(--police-titre);
+  font-size: var(--ts-2xl);
+  font-weight: var(--gr-titre);
+  letter-spacing: var(--interlettre-titre);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.prix span { color: var(--c-texte-doux); font-size: var(--ts-sm); }
+.liste-avantages { display: flex; flex-direction: column; gap: var(--e-2); font-size: var(--ts-sm); }
+.liste-avantages li { display: flex; gap: var(--e-2); align-items: flex-start; }
+.liste-avantages b { color: var(--c-succes); flex: none; font-weight: var(--gr-fort); }
+.liste-avantages .absent { color: var(--c-texte-faible); }
+.liste-avantages .absent b { color: var(--c-texte-faible); }
+
+/* --- Bandeau d'appel final ---------------------------------- */
+.appel {
+  background: var(--c-sombre);
+  color: var(--c-sur-sombre);
+  border-radius: var(--r-xl);
+  padding: var(--e-8) var(--e-7);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: var(--e-5);
+}
+.appel p { color: var(--c-sur-sombre-doux); max-width: 52ch; font-size: var(--ts-md); }
+.appel .mention { color: var(--c-sur-sombre-doux); opacity: .75; }
+
+/* --- Pied de page -------------------------------------------- */
+.pied { border-top: var(--trait) solid var(--c-bordure); padding-block: var(--e-8) var(--e-6); }
+.colonnes-pied { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: var(--e-6); }
+.colonnes-pied h4 { font-size: var(--ts-sm); font-weight: var(--gr-fort); letter-spacing: 0; margin-bottom: var(--e-3); }
+.colonnes-pied ul { display: flex; flex-direction: column; gap: var(--e-2); }
+.colonnes-pied ul a { color: var(--c-texte-doux); font-size: var(--ts-sm); }
+.bas-pied {
+  margin-top: var(--e-7); padding-top: var(--e-5);
+  border-top: var(--trait) solid var(--c-bordure);
+  display: flex; justify-content: space-between; gap: var(--e-4); flex-wrap: wrap;
+  font-size: var(--ts-xs); color: var(--c-texte-faible);
+}
+
+/* ============================================================
+   3. FICHE DU PARTI PRIS — variables et composants d'application
+   ============================================================ */
+.fiche { background: var(--c-fond-2); border-top: var(--trait) solid var(--c-bordure); padding-block: var(--e-8); }
+.fiche .contenu { display: flex; flex-direction: column; gap: var(--e-7); }
+.bloc-fiche { display: flex; flex-direction: column; gap: var(--e-4); }
+
+.nuancier { display: flex; flex-wrap: wrap; gap: var(--e-3); }
+.teinte { display: flex; flex-direction: column; gap: var(--e-1); width: 88px; }
+.teinte .pave { height: 46px; border-radius: var(--r-md); border: var(--trait) solid var(--c-bordure); }
+.teinte small { font-size: 11px; color: var(--c-texte-doux); }
+
+.echelle-typo { display: flex; flex-direction: column; gap: var(--e-3); }
+.echelle-typo > div { display: flex; align-items: baseline; gap: var(--e-4); }
+.echelle-typo small { width: 118px; flex: none; font-size: var(--ts-xs); color: var(--c-texte-faible); }
+
+.echelle-espace { display: flex; align-items: flex-end; gap: var(--e-3); }
+.echelle-espace span { display: block; background: var(--c-primaire-doux); border: var(--trait) solid var(--c-primaire); border-radius: var(--r-sm); }
+
+.rangee-composants { display: flex; flex-wrap: wrap; gap: var(--e-3); align-items: center; }
+
+.champ { display: flex; flex-direction: column; gap: var(--e-2); max-width: 300px; }
+.champ label { font-size: var(--ts-sm); font-weight: var(--gr-moyen); }
+.saisie {
+  height: var(--h-controle);
+  padding: 0 var(--e-3);
+  border: var(--trait) solid var(--c-bordure-forte);
+  border-radius: var(--r-saisie);
+  background: var(--c-surface);
+  color: var(--c-texte);
+  font-family: inherit; font-size: var(--ts-base);
+  width: 100%;
+}
+.saisie::placeholder { color: var(--c-texte-faible); }
+.champ-erreur .saisie { border-color: var(--c-danger); background: var(--c-danger-fond); }
+.msg-erreur { font-size: var(--ts-xs); color: var(--c-danger); font-weight: var(--gr-moyen); }
+
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 2px var(--e-2);
+  border-radius: var(--r-plein);
+  font-size: var(--ts-xs); font-weight: var(--gr-fort);
+}
+.badge-succes { background: var(--c-succes-fond); color: var(--c-succes); }
+.badge-alerte { background: var(--c-alerte-fond); color: var(--c-alerte); }
+.badge-danger { background: var(--c-danger-fond); color: var(--c-danger); }
+.badge-neutre { background: var(--c-surface-2); color: var(--c-texte-doux); }
+
+.message {
+  display: flex; gap: var(--e-3);
+  padding: var(--e-3) var(--e-4);
+  border-radius: var(--r-md);
+  border: var(--trait) solid transparent;
+  font-size: var(--ts-sm);
+}
+.message-succes { background: var(--c-succes-fond); color: var(--c-succes); border-color: var(--c-succes); }
+.message-alerte { background: var(--c-alerte-fond); color: var(--c-alerte); border-color: var(--c-alerte); }
+.message-danger { background: var(--c-danger-fond); color: var(--c-danger); border-color: var(--c-danger); }
+.message-info   { background: var(--c-info-fond);   color: var(--c-info);   border-color: var(--c-info); }
+
+.enveloppe-table { overflow-x: auto; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-lg); }
+table { width: 100%; border-collapse: collapse; font-size: var(--ts-sm); }
+thead th {
+  background: var(--c-surface-2);
+  text-align: left; padding: var(--e-3) var(--e-4);
+  font-size: var(--ts-xs); font-weight: var(--gr-fort);
+  letter-spacing: var(--interlettre-etiquette); text-transform: uppercase;
+  color: var(--c-texte-doux);
+  border-bottom: var(--trait) solid var(--c-bordure);
+  white-space: nowrap;
+}
+tbody td { padding: var(--e-3) var(--e-4); border-bottom: var(--trait) solid var(--c-bordure); }
+tbody tr:last-child td { border-bottom: 0; }
+td.droite, th.droite { text-align: right; }
+
+@media (max-width: 860px) {
+  :root { --ts-2xl: 2.5rem; --pad-section: var(--e-8); }
+  .nav { display: none; }
+  .colonnes-pied { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ---------- En-tête ---------- -->
+<header class="entete">
+  <div class="contenu">
+    <a class="marque" href="#"><span class="pastille">◆</span> Nom du produit</a>
+    <nav class="nav">
+      <a href="#">Fonctionnalités</a>
+      <a href="#">Tarifs</a>
+      <a href="#">Ressources</a>
+      <a href="#">Contact</a>
+    </nav>
+    <a class="btn btn-discret btn-petit" href="#">Se connecter</a>
+    <a class="btn btn-primaire btn-petit" href="#">Essayer gratuitement</a>
+  </div>
+</header>
+
+<!-- ---------- Hero ---------- -->
+<section class="hero">
+  <div class="contenu">
+    <span class="pilule">Nouveau · Import automatique</span>
+    <h1>Produisez plus, obtenez des résultats</h1>
+    <p class="chapo">
+      Suivez vos dossiers, vos échéances et vos règlements au même endroit. Sans tableur,
+      sans relance oubliée, sans mauvaise surprise en fin de mois.
+    </p>
+    <div class="actions-hero">
+      <a class="btn btn-primaire" href="#">Commencer gratuitement</a>
+      <a class="btn btn-second" href="#">Voir une démonstration</a>
+    </div>
+    <p class="mention">Gratuit pendant 14 jours · Aucune carte bancaire demandée</p>
+
+    <div class="cadre-visuel">
+      [VISUEL] Capture de l'écran principal du produit — la liste des dossiers,
+      avec les échéances de la semaine en évidence.
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Preuve chiffrée ---------- -->
+<section class="preuves">
+  <div class="contenu">
+    <div class="chiffre"><b class="num">2 400</b><span>équipes actives</span></div>
+    <div class="chiffre"><b class="num">98 %</b><span>de renouvellement</span></div>
+    <div class="chiffre"><b class="num">6 h</b><span>gagnées par semaine</span></div>
+    <div class="chiffre"><b class="num">4,8/5</b><span>note moyenne</span></div>
+  </div>
+</section>
+
+<!-- ---------- Fonctionnalités ---------- -->
+<section class="section">
+  <div class="contenu">
+    <div class="entete-section centree">
+      <span class="etiquette">Ce que vous obtenez</span>
+      <h2>Trois choses réglées dès la première semaine</h2>
+      <p>Pas un outil de plus à alimenter : celui qui remplace les trois fichiers que vous ouvrez chaque matin.</p>
+    </div>
+
+    <div class="grille-3">
+      <article class="carte">
+        <div class="icone">◷</div>
+        <h3>Plus aucune échéance oubliée</h3>
+        <p class="doux">Chaque dossier porte sa date limite. Ce qui approche remonte en haut de la liste, automatiquement.</p>
+        <a href="#">Voir comment →</a>
+      </article>
+      <article class="carte">
+        <div class="icone">⇄</div>
+        <h3>Vos règlements rapprochés seuls</h3>
+        <p class="doux">Les paiements reçus se raccrochent aux factures correspondantes. Vous ne validez que les cas ambigus.</p>
+        <a href="#">Voir comment →</a>
+      </article>
+      <article class="carte">
+        <div class="icone">◫</div>
+        <h3>Un point d'étape en un coup d'œil</h3>
+        <p class="doux">L'état réel de l'activité, à jour en permanence. Prêt à montrer, sans préparation.</p>
+        <a href="#">Voir comment →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Étapes ---------- -->
+<section class="section section-douce">
+  <div class="contenu">
+    <div class="entete-section">
+      <span class="etiquette">Mise en route</span>
+      <h2>Opérationnel en une demi-journée</h2>
+    </div>
+
+    <div class="grille-3">
+      <div class="etape">
+        <span class="numero-etape">1</span>
+        <h4>Importez l'existant</h4>
+        <p class="doux">Un fichier Excel ou un export de votre outil actuel suffit. Les colonnes sont reconnues automatiquement.</p>
+      </div>
+      <div class="etape">
+        <span class="numero-etape">2</span>
+        <h4>Invitez votre équipe</h4>
+        <p class="doux">Chacun voit ce qui le concerne. Les droits se règlent par rôle, pas personne par personne.</p>
+      </div>
+      <div class="etape">
+        <span class="numero-etape">3</span>
+        <h4>Laissez tourner</h4>
+        <p class="doux">Les relances partent seules. Vous n'intervenez que lorsqu'une réponse arrive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Témoignage ---------- -->
+<section class="section">
+  <div class="contenu">
+    <figure class="temoignage">
+      <blockquote>
+        « On tenait tout dans un tableur partagé, avec deux versions qui circulaient.
+        En trois semaines, plus personne n'a redemandé où était le bon fichier. »
+      </blockquote>
+      <figcaption class="signature">
+        <span class="avatar">C</span>
+        <div>
+          <strong>Clémence</strong>
+          <small>Responsable administrative · Atelier Novak</small>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ---------- Tarifs ---------- -->
+<section class="section section-douce">
+  <div class="contenu">
+    <div class="entete-section centree">
+      <span class="etiquette">Tarifs</span>
+      <h2>Un prix par équipe, pas par utilisateur</h2>
+      <p>Changez d'offre ou arrêtez quand vous voulez. Aucun engagement de durée.</p>
+    </div>
+
+    <div class="grille-3">
+      <article class="carte tarif">
+        <h3>Découverte</h3>
+        <p class="doux">Pour tester sur un premier dossier.</p>
+        <div class="prix"><b>0 €</b><span>/ mois</span></div>
+        <ul class="liste-avantages">
+          <li><b>✓</b><span>Jusqu'à 3 utilisateurs</span></li>
+          <li><b>✓</b><span>50 dossiers actifs</span></li>
+          <li class="absent"><b>✕</b><span>Relances automatiques</span></li>
+          <li class="absent"><b>✕</b><span>Export comptable</span></li>
+        </ul>
+        <a class="btn btn-second" href="#" style="margin-top: auto">Commencer</a>
+      </article>
+
+      <article class="carte tarif mis-en-avant">
+        <span class="ruban">Le plus choisi</span>
+        <h3>Équipe</h3>
+        <p class="doux">Pour une activité qui tourne tous les jours.</p>
+        <div class="prix"><b>39 €</b><span>/ mois</span></div>
+        <ul class="liste-avantages">
+          <li><b>✓</b><span>Utilisateurs illimités</span></li>
+          <li><b>✓</b><span>Dossiers illimités</span></li>
+          <li><b>✓</b><span>Relances automatiques</span></li>
+          <li><b>✓</b><span>Export comptable</span></li>
+        </ul>
+        <a class="btn btn-primaire" href="#" style="margin-top: auto">Essayer 14 jours</a>
+      </article>
+
+      <article class="carte tarif">
+        <h3>Cabinet</h3>
+        <p class="doux">Pour gérer plusieurs structures.</p>
+        <div class="prix"><b>89 €</b><span>/ mois</span></div>
+        <ul class="liste-avantages">
+          <li><b>✓</b><span>Tout ce que contient Équipe</span></li>
+          <li><b>✓</b><span>Plusieurs sociétés</span></li>
+          <li><b>✓</b><span>Accès client en lecture</span></li>
+          <li><b>✓</b><span>Assistance prioritaire</span></li>
+        </ul>
+        <a class="btn btn-second" href="#" style="margin-top: auto">Nous contacter</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Appel final ---------- -->
+<section class="section">
+  <div class="contenu">
+    <div class="appel">
+      <h2>Essayez sur un dossier réel</h2>
+      <p>Quatorze jours pour voir ce que ça change sur votre activité. Si ça ne vous convient pas, vous récupérez vos données et vous partez.</p>
+      <div class="actions-hero">
+        <a class="btn btn-sur-sombre" href="#">Créer mon compte</a>
+        <a class="btn btn-contour-clair" href="#">Parler à quelqu'un</a>
+      </div>
+      <p class="mention">Aucune carte bancaire demandée</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Pied de page ---------- -->
+<footer class="pied">
+  <div class="contenu">
+    <div class="colonnes-pied">
+      <div>
+        <a class="marque" href="#"><span class="pastille">◆</span> Nom du produit</a>
+        <p class="doux" style="margin-top: var(--e-3); font-size: var(--ts-sm); max-width: 34ch">
+          L'outil de suivi d'activité des équipes qui n'ont pas de temps à perdre avec un outil.
+        </p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul><li><a href="#">Fonctionnalités</a></li><li><a href="#">Tarifs</a></li><li><a href="#">Nouveautés</a></li></ul>
+      </div>
+      <div>
+        <h4>Ressources</h4>
+        <ul><li><a href="#">Documentation</a></li><li><a href="#">Guides</a></li><li><a href="#">Assistance</a></li></ul>
+      </div>
+      <div>
+        <h4>Société</h4>
+        <ul><li><a href="#">À propos</a></li><li><a href="#">Contact</a></li><li><a href="#">Mentions légales</a></li></ul>
+      </div>
+    </div>
+    <div class="bas-pied">
+      <span>© 2026 Nom du produit. Tous droits réservés.</span>
+      <span>Conditions d'utilisation · Confidentialité · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FICHE DU PARTI PRIS
+     Les variables rendues visibles, et les composants d'application
+     que la landing ne montre pas.
+     ============================================================ -->
+<section class="fiche">
+  <div class="contenu">
+
+    <div class="bloc-fiche">
+      <span class="etiquette">Couleurs</span>
+      <div class="nuancier">
+        <div class="teinte"><div class="pave" style="background: var(--c-primaire)"></div><small>primaire</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-primaire-doux)"></div><small>primaire douce</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-accent)"></div><small>accent</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-sombre)"></div><small>sombre</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-texte)"></div><small>texte</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-texte-doux)"></div><small>texte doux</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-fond)"></div><small>fond</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-fond-2)"></div><small>fond 2</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-surface-2)"></div><small>surface 2</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-bordure)"></div><small>bordure</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-succes)"></div><small>succès</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-alerte)"></div><small>alerte</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-danger)"></div><small>danger</small></div>
+        <div class="teinte"><div class="pave" style="background: var(--c-info)"></div><small>info</small></div>
+      </div>
+    </div>
+
+    <div class="grille-2">
+      <div class="bloc-fiche">
+        <span class="etiquette">Typographie</span>
+        <div class="echelle-typo">
+          <div><small>2xl · titre du hero</small><span style="font-family: var(--police-titre); font-size: var(--ts-2xl); font-weight: var(--gr-titre); line-height: 1; letter-spacing: var(--interlettre-titre)">Aa</span></div>
+          <div><small>xl · titre de section</small><span style="font-family: var(--police-titre); font-size: var(--ts-xl); font-weight: var(--gr-titre); letter-spacing: var(--interlettre-titre)">Titre de section</span></div>
+          <div><small>lg · titre de carte</small><span style="font-family: var(--police-titre); font-size: var(--ts-lg); font-weight: var(--gr-titre)">Titre de carte</span></div>
+          <div><small>md · chapô</small><span style="font-size: var(--ts-md); color: var(--c-texte-doux)">Le sous-titre du hero.</span></div>
+          <div><small>base · corps</small><span>Le texte courant de la page.</span></div>
+          <div><small>sm · dense</small><span style="font-size: var(--ts-sm)">Les libellés et les tableaux.</span></div>
+          <div><small>xs · étiquette</small><span class="etiquette">Ce que vous obtenez</span></div>
+        </div>
+      </div>
+
+      <div class="bloc-fiche">
+        <span class="etiquette">Espacement, rayons, relief</span>
+        <div class="echelle-espace">
+          <span style="width: var(--e-1); height: var(--e-1)"></span>
+          <span style="width: var(--e-2); height: var(--e-2)"></span>
+          <span style="width: var(--e-3); height: var(--e-3)"></span>
+          <span style="width: var(--e-4); height: var(--e-4)"></span>
+          <span style="width: var(--e-5); height: var(--e-5)"></span>
+          <span style="width: var(--e-6); height: var(--e-6)"></span>
+          <span style="width: var(--e-7); height: var(--e-7)"></span>
+          <span style="width: var(--e-8); height: var(--e-8)"></span>
+        </div>
+        <div style="display: flex; gap: var(--e-3); align-items: flex-end; margin-top: var(--e-2)">
+          <div style="width: 60px; height: 44px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-sm); box-shadow: var(--o-sm)"></div>
+          <div style="width: 60px; height: 44px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-md); box-shadow: var(--o-md)"></div>
+          <div style="width: 60px; height: 44px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-lg); box-shadow: var(--o-lg)"></div>
+          <div style="width: 60px; height: 44px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-xl)"></div>
+          <div style="width: 44px; height: 44px; background: var(--c-surface); border: var(--trait) solid var(--c-bordure); border-radius: var(--r-plein)"></div>
+        </div>
+        <p class="mention">Densité : contrôle <span class="mono">var(--h-controle)</span> · carte <span class="mono">var(--pad-carte)</span> · section <span class="mono">var(--pad-section)</span></p>
+      </div>
+    </div>
+
+    <div class="bloc-fiche">
+      <span class="etiquette">Composants d'application</span>
+      <p class="doux" style="font-size: var(--ts-sm); margin-top: calc(-1 * var(--e-2))">
+        Ce que la page d'accueil ne montre pas, et dont l'application aura besoin.
+      </p>
+
+      <div class="rangee-composants">
+        <button class="btn btn-primaire">Principal</button>
+        <button class="btn btn-second">Secondaire</button>
+        <button class="btn btn-discret">Discret</button>
+        <button class="btn btn-danger">Supprimer</button>
+        <button class="btn btn-primaire btn-focus">Au clavier</button>
+        <button class="btn btn-primaire" disabled>Indisponible</button>
+      </div>
+
+      <div class="grille-2" style="align-items: start">
+        <div style="display: flex; flex-direction: column; gap: var(--e-4)">
+          <div class="champ">
+            <label for="ch-mail">Adresse e-mail</label>
+            <input class="saisie" id="ch-mail" placeholder="prenom@societe.fr">
+          </div>
+          <div class="champ champ-erreur">
+            <label for="ch-mail2">Adresse e-mail</label>
+            <input class="saisie" id="ch-mail2" value="contact@marceau">
+            <span class="msg-erreur">Cette adresse e-mail n'est pas valide.</span>
+          </div>
+          <div class="rangee-composants">
+            <span class="badge badge-succes">Réglé</span>
+            <span class="badge badge-alerte">En attente</span>
+            <span class="badge badge-danger">En retard</span>
+            <span class="badge badge-neutre">Brouillon</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--e-3)">
+          <div class="message message-info"><span>ⓘ</span><div>Trois dossiers attendent une validation.</div></div>
+          <div class="message message-succes"><span>✓</span><div>Le dossier a bien été enregistré.</div></div>
+          <div class="message message-alerte"><span>!</span><div>Ce montant dépasse l'encours autorisé.</div></div>
+          <div class="message message-danger"><span>✕</span><div>L'enregistrement a échoué. Réessayez dans quelques instants.</div></div>
+        </div>
+      </div>
+
+      <div class="enveloppe-table">
+        <table>
+          <thead>
+            <tr><th>Référence</th><th>Client</th><th>Échéance</th><th>Statut</th><th class="droite">Montant</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">DOS-2418</td><td>Marceau &amp; Fils</td><td class="doux num">12/08/2026</td><td><span class="badge badge-succes">Réglé</span></td><td class="droite num">1 240,00 €</td></tr>
+            <tr><td class="mono">DOS-2417</td><td>Atelier Novak</td><td class="doux num">09/08/2026</td><td><span class="badge badge-alerte">En attente</span></td><td class="droite num">318,50 €</td></tr>
+            <tr><td class="mono">DOS-2415</td><td>Groupe Halvard</td><td class="doux num">28/07/2026</td><td><span class="badge badge-danger">En retard</span></td><td class="droite num">2 780,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

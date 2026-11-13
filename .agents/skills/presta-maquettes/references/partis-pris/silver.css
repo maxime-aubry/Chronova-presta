@@ -1,0 +1,95 @@
+/* Silver — Plan technique sur vélin — filets gris structurels, grotesque humaniste, orange vif strictement fonctionnel.
+   Documentation complète : design-systems/silver.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #ffffff;   /* Canvas */
+  --c-fond-2:          #f9f9f9;   /* Vellum */
+  --c-surface:         #f9f9f9;   /* la carte est vélin, cerclée d'un filet */
+  --c-surface-2:       #f1f1f1;
+  --c-sombre:          #262626;   /* Ink */
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: rgba(255, 255, 255, .70);
+  --c-contour-clair:   rgba(255, 255, 255, .28);
+  --c-bordure:         #e5e7eb;   /* Gridline — le squelette structurel du système */
+  --c-bordure-forte:   #e5e7eb;
+  --c-texte-titre:     #262626;
+  --c-texte:           #262626;
+  --c-texte-doux:      #727272;   /* Slate */
+  --c-texte-faible:    #949494;   /* Ash */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #ff4d00;   /* Ember — 3 à 4 types d'éléments par page, pas plus */
+  --c-primaire-survol: #e64500;
+  --c-primaire-doux:   #fcddcc;   /* Ember Glow — le halo chaud */
+  --c-sur-primaire:    #ffffff;
+  --c-focus:           #ff4d00;
+  --c-accent:          #ff4d00;
+  --c-accent-doux:     #fcddcc;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #3f7a4a;   /* dérivés : le système exclut volontairement verts, */
+  --c-succes-fond:     #eef4ef;   /* bleus et violets                                  */
+  --c-alerte:          #9a5a00;
+  --c-alerte-fond:     #fdf0e6;
+  --c-danger:          #c23a0a;   /* reste dans la famille de la braise */
+  --c-danger-fond:     #fdeae2;
+  --c-info:            #616161;   /* Graphite — l'information reste grise */
+  --c-info-fond:       #f1f1f1;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: var(--police);
+  --police-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.75rem;    /* 12 */
+  --ts-sm:   0.875rem;   /* 14 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.25rem;    /* 20 */
+  --ts-lg:   1.5rem;     /* 24 */
+  --ts-xl:   2.5rem;     /* 40 */
+  --ts-2xl:  3.75rem;    /* 60 */
+  --ts-3xl:  3.75rem;
+
+  --gr-normal: 400;
+  --gr-moyen:  450;      /* le poids intermédiaire, réservé au corps */
+  --gr-fort:   500;
+  --gr-titre:  500;      /* autorité calme, jamais de gras */
+
+  --ih-serree:  1.07;
+  --ih-normale: 1.5;
+  --interlettre-titre: -0.01em;
+  --interlettre-etiquette: 0.08em;
+
+  /* --- Espacement (base 4px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 64px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    4px;
+  --r-md:    8px;
+  --r-lg:    16px;
+  --r-xl:    16px;
+  --r-plein: 999px;
+  --r-bouton: 999px;     /* la pastille est un signal d'identité */
+  --r-saisie: 8px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: rgb(249, 249, 249) 0 0 0 6px;   /* l'anneau vélin : de la profondeur sans ombre */
+  --o-md: rgba(0, 0, 0, .03) 0 24px 32px -12px, rgba(0, 0, 0, .03) 0 16px 24px -8px, rgba(0, 0, 0, .03) 0 8px 16px -4px;
+  --o-lg: rgba(0, 0, 0, .02) 0 40px 48px -20px, rgba(0, 0, 0, .03) 0 32px 32px -20px, rgba(0, 0, 0, .03) 0 16px 24px -12px;
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   40px;
+  --pad-carte:    32px;
+  --pad-section:  96px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Précis et sans emphase. Le vocabulaire technique est
+     assumé, un terme clé par titre porte l'accent.           */
+}

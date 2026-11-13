@@ -1,0 +1,8 @@
+# Codex — invocation explicite uniquement.
+# Cette skill ne doit se lancer que sur demande de l'utilisateur ($nom-de-la-skill
+# ou /skills), jamais sur correspondance avec la description.
+# Fichier annexe hors standard Agent Skills : SKILL.md reste conforme, les autres
+# outils ignorent ce dossier.
+# Référence : https://learn.chatgpt.com/docs/build-skills.md
+policy:
+  allow_implicit_invocation: false

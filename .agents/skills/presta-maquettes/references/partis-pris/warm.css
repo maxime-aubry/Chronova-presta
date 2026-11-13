@@ -1,0 +1,95 @@
+/* Warm — Carnet de parchemin et stylo terracotta — serif humaniste, tout en pastille, cartes très arrondies, une braise orange rationnée.
+   Documentation complète : design-systems/warm.md */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:wght@400..700&display=swap');
+
+:root {
+
+  /* --- Couleurs : fonds et texte ------------------------- */
+  --c-fond:            #fdf9f4;   /* Parchment Cream — jamais de blanc froid en fond */
+  --c-fond-2:          #f9f3ea;   /* la page reste crème d'un bout à l'autre */
+  --c-surface:         #f9efe4;   /* Dust Sand — la carte marketing */
+  --c-surface-2:       #ffffff;   /* Star White — les surfaces produit posées dessus */
+  --c-sombre:          #2d2f34;   /* Shade Ink */
+  --c-sur-sombre:      #ffffff;
+  --c-sur-sombre-doux: rgba(255, 255, 255, .70);
+  --c-contour-clair:   rgba(255, 255, 255, .30);
+  --c-bordure:         #ecedef;   /* Moon Silver — le seul ton de bordure */
+  --c-bordure-forte:   #2d2f34;   /* le contour 2px encre : la pastille outlined */
+  --c-texte-titre:     #2d2f34;   /* Shade Ink */
+  --c-texte:           #3f434a;   /* Shade Charcoal */
+  --c-texte-doux:      #5e646e;   /* Shade Slate */
+  --c-texte-faible:    #9da3af;   /* Shade Fog */
+
+  /* --- Couleurs : marque --------------------------------- */
+  --c-primaire:        #f67748;   /* Ember — moins de 5 % de la page, sinon le signal se dilue */
+  --c-primaire-survol: #e5643a;
+  --c-primaire-doux:   #fdeee7;
+  --c-sur-primaire:    #ffffff;
+  --c-focus:           #f67748;
+  --c-accent:          #3f434a;   /* Dust Tag Chip : encre sur sable, jamais la braise */
+  --c-accent-doux:     #f9efe4;
+
+  /* --- Couleurs : sémantique ----------------------------- */
+  --c-succes:          #479a53;   /* Verification Green */
+  --c-succes-fond:     #eaf3ea;
+  --c-alerte:          #b06a2c;   /* dérivé : le système n'a pas de couleur d'avertissement */
+  --c-alerte-fond:     #f9efe4;
+  --c-danger:          #c4452b;   /* braise assombrie pour ne pas concurrencer le CTA */
+  --c-danger-fond:     #fbeae5;
+  --c-info:            #4b51c3;   /* Tag Violet */
+  --c-info-fond:       #ecedf8;
+
+  /* --- Typographie --------------------------------------- */
+  --police:       'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --police-titre: 'Lora', ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --police-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ts-xs:   0.8125rem;  /* 13 */
+  --ts-sm:   0.9375rem;  /* 15 */
+  --ts-base: 1rem;       /* 16 */
+  --ts-md:   1.1875rem;  /* 19 */
+  --ts-lg:   1.625rem;   /* 26 */
+  --ts-xl:   2.25rem;    /* 36 */
+  --ts-2xl:  4rem;       /* 64 */
+  --ts-3xl:  4rem;
+
+  --gr-normal: 400;
+  --gr-moyen:  500;
+  --gr-fort:   600;
+  --gr-titre:  500;      /* le serif porte le titre, jamais le gras 700 */
+
+  --ih-serree:  1.2;
+  --ih-normale: 1.5;
+  --interlettre-titre: 0em;   /* un serif humaniste ne se resserre pas */
+  --interlettre-etiquette: 0.06em;
+
+  /* --- Espacement (base 4px) ------------------------------ */
+  --e-1: 4px;   --e-2: 8px;   --e-3: 12px;  --e-4: 16px;
+  --e-5: 24px;  --e-6: 32px;  --e-7: 48px;  --e-8: 72px;  --e-9: 96px;
+
+  /* --- Rayons -------------------------------------------- */
+  --r-sm:    8px;
+  --r-md:    12px;
+  --r-lg:    32px;       /* la signature du système : cartes très arrondies */
+  --r-xl:    32px;
+  --r-plein: 999px;
+  --r-bouton: 999px;     /* tout est pastille */
+  --r-saisie: 999px;
+
+  /* --- Ombres et relief ---------------------------------- */
+  --o-sm: 0 0 0 0 rgba(0, 0, 0, 0);   /* les cartes marketing sont à plat */
+  --o-md: rgba(0, 0, 0, .1) 0 1px 3px 0, rgba(0, 0, 0, .05) 0 2px 6px 0, rgba(0, 0, 0, .01) 0 4px 12px 0;
+  --o-lg: rgba(0, 0, 0, .1) 0 1px 3px 0, rgba(0, 0, 0, .05) 0 2px 6px 0, rgba(0, 0, 0, .01) 0 4px 12px 0;
+  --trait: 1px;
+
+  /* --- Densité et mise en page ---------------------------- */
+  --h-controle:   44px;
+  --pad-carte:    40px;
+  --pad-section:  96px;
+  --largeur-max:  1200px;
+  --largeur-texte: 62ch;
+
+  /* --- Ton éditorial -------------------------------------
+     Chaleureux et direct. Phrases courtes, vocabulaire de
+     tous les jours, un mot-clé mis en avant par phrase.      */
+}
